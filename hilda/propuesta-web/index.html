@@ -1,0 +1,378 @@
+<title>Propuesta hildaavila.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#F5F7F3;
+  --surface:#FFFFFF;
+  --ink:#18221F;
+  --muted:#56645F;
+  --line:#DCE3DE;
+  --leaf:#1E5A49;
+  --leaf-soft:#E3EFEA;
+  --mango:#E89A2C;
+  --mango-soft:#FBEBD3;
+  --on-leaf:#FFFFFF;
+  --display:"Young Serif", Georgia, "Times New Roman", serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#111816; --surface:#18221F; --ink:#E9EFEC; --muted:#A3B1AB; --line:#2B3833;
+    --leaf:#6FC3A6; --leaf-soft:#1D3029; --mango:#F2B25A; --mango-soft:#3A2C17; --on-leaf:#0E1513;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#111816; --surface:#18221F; --ink:#E9EFEC; --muted:#A3B1AB; --line:#2B3833;
+  --leaf:#6FC3A6; --leaf-soft:#1D3029; --mango:#F2B25A; --mango-soft:#3A2C17; --on-leaf:#0E1513;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;padding-inline:20px;padding-block:0 64px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:72px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.2rem,6vw,3.6rem)}
+h2{font-size:clamp(1.6rem,3.6vw,2.2rem)}
+h3{font-size:1.25rem}
+p{margin:0;max-width:65ch}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf)}
+.lead{font-size:1.15rem;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:22px}
+.head{display:flex;flex-direction:column;gap:10px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* Hero */
+header.hero{padding-top:56px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--muted);font-size:.92rem}
+.hero .meta b{color:var(--ink);font-weight:600}
+.urlbar{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.urlbar .addr{font-family:var(--mono);font-size:.95rem;background:var(--leaf-soft);color:var(--leaf);padding:8px 12px;border-radius:8px}
+.urlbar ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.urlbar li{display:flex;justify-content:space-between;gap:12px;font-size:.95rem;border-bottom:1px dashed var(--line);padding-bottom:6px}
+.urlbar li span:last-child{font-family:var(--mono);font-size:.82rem;color:var(--muted)}
+.urlbar li:last-child{border-bottom:0;padding-bottom:0}
+
+/* Flow */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1.4fr;gap:14px;align-items:center}
+.node{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.node.core{background:var(--leaf);color:var(--on-leaf);border-color:var(--leaf)}
+.node.core .small{color:var(--on-leaf);opacity:.85}
+.small{font-size:.88rem;color:var(--muted)}
+.arrow{font-size:1.6rem;color:var(--mango);text-align:center}
+.outs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.out{background:var(--mango-soft);border-radius:10px;padding:10px 12px;font-weight:600;font-size:.93rem}
+.out small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+
+/* Sections grid */
+.pages{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.page{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.page .path{font-family:var(--mono);font-size:.8rem;color:var(--leaf)}
+.page ul{margin:0;padding-left:18px;color:var(--muted);font-size:.93rem;display:flex;flex-direction:column;gap:3px}
+
+/* Reuse list */
+.reuse{display:grid;grid-template-columns:repeat(2,1fr);gap:0 32px}
+.reuse div{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+.reuse b{font-weight:600}
+.reuse span{color:var(--muted);font-size:.95rem}
+
+/* Plans */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px;position:relative}
+.plan.rec{border:2px solid var(--leaf)}
+.badge{position:absolute;top:-12px;left:20px;background:var(--leaf);color:var(--on-leaf);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.price{font-family:var(--mono);font-size:1.7rem;font-variant-numeric:tabular-nums}
+.price small{font-family:var(--body);font-size:.85rem;color:var(--muted);display:block}
+.plan ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:.94rem}
+.plan .plus{color:var(--leaf);font-weight:600;font-size:.9rem}
+.plan .fit{margin-top:auto;font-size:.88rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.inc{background:var(--leaf-soft);border-radius:14px;padding:18px 20px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:.94rem}
+.inc b{color:var(--leaf)}
+
+/* Table */
+.tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.95rem}
+th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+th.n{text-align:right}
+tr:last-child td{border-bottom:0}
+tr.hl td{background:var(--leaf-soft)}
+.note{font-size:.88rem;color:var(--muted)}
+
+/* Two col */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.box ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:.95rem}
+
+/* Timeline */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:3px solid var(--leaf)}
+.step{padding:16px 16px 0 0;display:flex;flex-direction:column;gap:6px}
+.step .when{font-family:var(--mono);font-size:.8rem;color:var(--leaf)}
+.step p{font-size:.93rem;color:var(--muted)}
+
+.next{background:var(--leaf);color:var(--on-leaf);border-radius:18px;padding:32px;display:flex;flex-direction:column;gap:16px}
+.next h2{color:var(--on-leaf)}
+.next ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;max-width:70ch}
+footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:18px}
+
+@media (max-width:820px){
+  header.hero{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr}
+  .arrow{transform:rotate(90deg)}
+  .pages,.plans{grid-template-columns:1fr 1fr}
+  .reuse,.two{grid-template-columns:1fr}
+  .timeline{grid-template-columns:1fr 1fr;row-gap:12px}
+}
+@media (max-width:560px){
+  .pages,.plans,.outs{grid-template-columns:1fr}
+  .reuse div{grid-template-columns:1fr;gap:4px}
+  .timeline{grid-template-columns:1fr}
+  .plan.rec{margin-top:8px}
+}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="head">
+    <span class="eyebrow">Propuesta de continuidad · Octubre 2026</span>
+    <h1>hildaavila.com: tu consulta, tus cursos y tu libro en un solo lugar</h1>
+    <p class="lead">En estos tres meses las redes construyeron audiencia. El siguiente paso es darle a esa audiencia un lugar donde agendar, inscribirse y comprar, sin depender de mensajes uno a uno.</p>
+    <div class="meta"><span>Preparada para <b>Hilda Ávila</b></span><span>Enviada: <b>25 de septiembre de 2026</b></span><span>Para platicar en la reunión del <b>30 de septiembre</b></span><span>Montos en <b>pesos mexicanos</b></span></div>
+  </div>
+  <div class="urlbar" aria-label="Mapa del sitio propuesto">
+    <div class="addr">https://hildaavila.com</div>
+    <ul>
+      <li><span>Inicio</span><span>/</span></li>
+      <li><span>Consulta</span><span>/consulta</span></li>
+      <li><span>Cursos en línea y presenciales</span><span>/cursos</span></li>
+      <li><span>Libro <i>Come</i></span><span>/libro</span></li>
+      <li><span>Dumuni</span><span>/dumuni</span></li>
+      <li><span>Recursos y blog</span><span>/blog</span></li>
+      <li><span>Sobre Hilda y contacto</span><span>/sobre-mi</span></li>
+    </ul>
+  </div>
+</header>
+
+<section>
+  <div class="head">
+    <span class="eyebrow">La idea</span>
+    <h2>Las redes atraen, la web convierte</h2>
+    <p>Hoy cada interesado termina en un mensaje directo. Con la web, cada publicación lleva a una página concreta donde la persona puede actuar sola, a cualquier hora.</p>
+  </div>
+  <div class="flow">
+    <div class="node"><b>Redes sociales</b><span class="small">Lo que ya publicamos: reels, tips, recetas, testimonios, en vivos.</span></div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="node core"><b>hildaavila.com</b><span class="small">Enlace en bio, historias y anuncios apuntan a la página exacta.</span></div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="outs">
+      <div class="out">Agenda consulta<small>con pago anticipado</small></div>
+      <div class="out">Curso en línea<small>acceso inmediato</small></div>
+      <div class="out">Curso presencial<small>inscripción y cupo</small></div>
+      <div class="out">Libro <i>Come</i> y Dumuni<small>compra con envío o digital</small></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="head">
+    <span class="eyebrow">Estructura del sitio</span>
+    <h2>Qué tendrá cada sección</h2>
+  </div>
+  <div class="pages">
+    <div class="page"><span class="path">/consulta</span><h3>Consulta</h3><ul><li>Modalidades: presencial y en línea</li><li>Calendario con horarios disponibles</li><li>Pago anticipado para reducir cancelaciones</li><li>Recordatorio automático por correo</li></ul></div>
+    <div class="page"><span class="path">/cursos</span><h3>Cursos en línea</h3><ul><li>Videos por módulo, a su ritmo</li><li>Cuenta de alumno con avance</li><li>Materiales descargables</li><li>Constancia al terminar</li></ul></div>
+    <div class="page"><span class="path">/cursos/presenciales</span><h3>Cursos presenciales</h3><ul><li>Calendario de fechas y sede</li><li>Cupo limitado visible</li><li>Inscripción y pago en línea</li><li>Lista de asistentes para Hilda</li></ul></div>
+    <div class="page"><span class="path">/libro</span><h3>Libro <i>Come</i></h3><ul><li>Página de venta con reseñas</li><li>Versión impresa con envío y/o digital</li><li>Capítulo de muestra a cambio del correo</li><li>Paquetes: libro + curso o libro + consulta</li></ul></div>
+    <div class="page"><span class="path">/dumuni</span><h3>Dumuni</h3><ul><li>Sección propia con su identidad</li><li>Qué es, para quién y cómo funciona</li><li>Compra o registro directo</li><li>Contenido de redes enfocado a Dumuni</li></ul></div>
+    <div class="page"><span class="path">/blog</span><h3>Recursos y blog</h3><ul><li>Cada reel se convierte en artículo</li><li>Aparece en búsquedas de Google</li><li>Cada artículo invita a consulta, curso o libro</li><li>Botón de WhatsApp en todo el sitio</li></ul></div>
+  </div>
+</section>
+
+<section>
+  <div class="head">
+    <span class="eyebrow">Aprovechar lo que ya existe</span>
+    <h2>El contenido de redes se vuelve a usar en la web</h2>
+    <p>No empezamos de cero. El material de estos tres meses alimenta la web desde el primer día, y el servicio de redes sigue trabajando en conjunto con ella.</p>
+  </div>
+  <div class="reuse">
+    <div><b>Reels y videos</b><span>Se incrustan en las páginas de cursos, libro y Dumuni como prueba de valor.</span></div>
+    <div><b>Tips y recetas</b><span>Pasan a artículos del blog que posicionan a Hilda en Google.</span></div>
+    <div><b>Testimonios</b><span>Comentarios y mensajes (con permiso) se muestran junto a cada oferta.</span></div>
+    <div><b>Preguntas frecuentes</b><span>Lo que más preguntan por DM se responde en la web y ahorra tiempo.</span></div>
+    <div><b>Enlace en bio</b><span>Deja de ser un menú genérico y lleva a la página exacta de cada campaña.</span></div>
+    <div><b>Medición</b><span>Píxel de Meta y Google Analytics: sabremos qué publicación trajo cada venta.</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="head">
+    <span class="eyebrow">Propuestas para la web</span>
+    <h2>Tres opciones, de menor a mayor alcance</h2>
+    <p>Las tres usan el dominio hildaavila.com. Se puede empezar con una y crecer a la siguiente después, pagando solo la diferencia.</p>
+  </div>
+  <div class="plans">
+    <div class="plan">
+      <span class="eyebrow">Opción A</span>
+      <h3>Web Esencial</h3>
+      <div class="price num">$8,500<small>pago único de desarrollo</small></div>
+      <ul>
+        <li>Inicio, Sobre Hilda, Contacto</li>
+        <li>Consulta con agenda en línea</li>
+        <li>Página del libro <i>Come</i> con compra por enlace de pago</li>
+        <li>Página informativa de Dumuni</li>
+        <li>Cursos presenciales: fechas e inscripción por WhatsApp</li>
+        <li>Botón de WhatsApp y enlaces a redes</li>
+      </ul>
+      <p class="fit">Para salir rápido y tener presencia profesional. Las ventas se cierran todavía por mensaje.</p>
+    </div>
+    <div class="plan rec">
+      <span class="badge">Recomendada</span>
+      <span class="eyebrow">Opción B</span>
+      <h3>Web Profesional</h3>
+      <div class="price num">$14,500<small>pago único de desarrollo</small></div>
+      <span class="plus">Todo lo de la opción A, más:</span>
+      <ul>
+        <li>Tienda: libro <i>Come</i> y Dumuni con tarjeta, OXXO y transferencia</li>
+        <li>Consulta con pago anticipado</li>
+        <li>Cursos presenciales con inscripción, cupo y pago en línea</li>
+        <li>Blog con el contenido de redes</li>
+        <li>Capítulo de muestra del libro para captar correos</li>
+        <li>Píxel de Meta y Google Analytics</li>
+      </ul>
+      <p class="fit">Para vender sin intermediar: la persona paga sola y Hilda recibe la confirmación.</p>
+    </div>
+    <div class="plan">
+      <span class="eyebrow">Opción C</span>
+      <h3>Web Integral con Academia</h3>
+      <div class="price num">$22,000<small>pago único de desarrollo</small></div>
+      <span class="plus">Todo lo de la opción B, más:</span>
+      <ul>
+        <li>Plataforma de cursos en línea con cuenta de alumno</li>
+        <li>Videos por módulo, avance y constancia</li>
+        <li>Paquetes combinados: libro + curso, curso + consulta</li>
+        <li>Correo automático de bienvenida y seguimiento</li>
+        <li>Carga del primer curso en línea incluida</li>
+      </ul>
+      <p class="fit">Para convertir el conocimiento de Hilda en ingresos que no dependen de su agenda.</p>
+    </div>
+  </div>
+  <div class="inc">
+    <span><b>Las tres incluyen:</b></span>
+    <span>Dominio hildaavila.com (1 año)</span>
+    <span>Hosting (1 año)</span>
+    <span>Certificado de seguridad SSL</span>
+    <span>Correo profesional @hildaavila.com</span>
+    <span>Diseño adaptado a celular</span>
+    <span>1 mes de mantenimiento</span>
+  </div>
+</section>
+
+<section>
+  <div class="head">
+    <span class="eyebrow">Combinaciones</span>
+    <h2>Redes sociales + web: cuánto se paga y cuándo</h2>
+    <p>El servicio de publicación y administración de redes continúa en <b class="num">$2,800</b> al mes. El mantenimiento de la web cuesta <b class="num">$1,500</b> al mes a partir del segundo mes, porque el primero ya va incluido.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Combinación</th><th class="n">Primer mes</th><th class="n">Del 2.º mes en adelante</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Solo redes sociales</b><br><span class="note">Publicación y administración</span></td><td class="n">$2,800</td><td class="n">$2,800 / mes</td></tr>
+        <tr><td><b>Redes + Web Esencial (A)</b></td><td class="n">$11,300</td><td class="n">$4,300 / mes</td></tr>
+        <tr class="hl"><td><b>Redes + Web Profesional (B)</b><br><span class="note">Recomendada</span></td><td class="n">$17,300</td><td class="n">$4,300 / mes</td></tr>
+        <tr><td><b>Redes + Web Integral con Academia (C)</b></td><td class="n">$24,800</td><td class="n">$4,300 / mes</td></tr>
+        <tr><td><b>Solo web (sin redes)</b><br><span class="note">A, B o C</span></td><td class="n">$8,500 a $22,000</td><td class="n">$1,500 / mes</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Primer mes = desarrollo de la web + primer mes de redes. El desarrollo puede dividirse en 50% al iniciar y 50% al entregar. Las comisiones de las pasarelas de pago (Mercado Pago, Stripe o similar) y los costos de envío del libro los cobra cada proveedor por separado. La renovación de dominio y hosting a partir del segundo año queda dentro del mantenimiento mensual.</p>
+</section>
+
+<section>
+  <div class="two">
+    <div class="box">
+      <span class="eyebrow">Mantenimiento web · $1,500 / mes</span>
+      <h3>Qué incluye</h3>
+      <ul>
+        <li>Hosting, dominio y SSL siempre activos</li>
+        <li>Actualizaciones, seguridad y respaldos semanales</li>
+        <li>Altas de nuevas fechas de cursos y talleres</li>
+        <li>Cambios de textos, precios e imágenes</li>
+        <li>Publicación en el blog del contenido de redes</li>
+        <li>Reporte mensual de visitas y ventas de la web</li>
+        <li>Soporte por WhatsApp en horario laboral</li>
+      </ul>
+    </div>
+    <div class="box">
+      <span class="eyebrow">Redes sociales · $2,800 / mes</span>
+      <h3>Qué incluye</h3>
+      <ul>
+        <li>Continuidad del servicio actual de publicación y administración</li>
+        <li>Contenido que dirige a la página exacta de cada oferta</li>
+        <li>Campañas de lanzamiento para cursos, libro y Dumuni</li>
+        <li>Seguimiento de resultados de redes y web en un mismo reporte</li>
+      </ul>
+      <p class="note">Al trabajar redes y web con el mismo equipo, el mensaje, las fechas y las campañas quedan alineados.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="head">
+    <span class="eyebrow">Calendario</span>
+    <h2>De la aprobación al lanzamiento</h2>
+    <p>Tiempos estimados para la opción B. La opción A toma alrededor de 2 semanas y la C alrededor de 6.</p>
+  </div>
+  <div class="timeline">
+    <div class="step"><span class="when">Semana 1</span><h3>Contenido</h3><p>Registro del dominio, recopilación de fotos, textos, precios y datos de cursos, libro y Dumuni.</p></div>
+    <div class="step"><span class="when">Semana 2</span><h3>Diseño</h3><p>Propuesta visual de inicio y páginas clave para aprobación de Hilda.</p></div>
+    <div class="step"><span class="when">Semana 3</span><h3>Desarrollo</h3><p>Agenda, tienda, pagos, blog y medición. Pruebas de compra reales.</p></div>
+    <div class="step"><span class="when">Semana 4</span><h3>Lanzamiento</h3><p>Publicación del sitio y campaña en redes para anunciarlo.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="two">
+    <div class="box">
+      <span class="eyebrow">Lo que necesitamos de Hilda</span>
+      <ul>
+        <li>Fotos profesionales o una sesión para la web</li>
+        <li>Datos de la consulta: modalidades, duración, precio, horarios</li>
+        <li>Temario, fechas, sede y precio de cada curso</li>
+        <li>Portada, precio y formatos del libro <i>Come</i></li>
+        <li>Descripción y precio de Dumuni</li>
+        <li>Cuenta bancaria para recibir los pagos</li>
+      </ul>
+    </div>
+    <div class="box">
+      <span class="eyebrow">Preguntas para pensar</span>
+      <ul>
+        <li>¿Qué quieres vender primero: consulta, curso o libro?</li>
+        <li>¿Tienes ya un curso listo para grabar en línea?</li>
+        <li>¿El libro se venderá impreso, digital o ambos? ¿Quién hace los envíos?</li>
+        <li>¿Qué tan seguido abrirás cursos presenciales?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="next">
+  <span class="eyebrow" style="color:var(--on-leaf);opacity:.85">Siguientes pasos</span>
+  <h2>Para arrancar en octubre</h2>
+  <ol>
+    <li>Elegir la opción de web (A, B o C) y confirmar la continuidad de redes.</li>
+    <li>Registrar hildaavila.com esta misma semana para asegurar el dominio.</li>
+    <li>Entregar el anticipo del 50% del desarrollo y el material de la lista.</li>
+    <li>Revisión del diseño en la semana 2 y lanzamiento en la semana 4.</li>
+  </ol>
+</section>
+
+<footer>Propuesta válida por 30 días a partir del 25 de septiembre de 2026. Precios en pesos mexicanos; si requieres factura se agrega el IVA correspondiente.</footer>
+
+</div>
